@@ -54,7 +54,7 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-" proper PEP8 indentation for Python (and Java)
+" proper PEP8 indentation for Python
 au BufNewFile,BufRead *.py
     \ set tabstop=4 | 
     \ set softtabstop=4 |
@@ -81,7 +81,17 @@ au BufNewFile,BufRead *.java
     \ set colorcolumn=80 |
 
 " proper indendentation for web development
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.html
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
@@ -170,3 +180,17 @@ set laststatus=2
 " Don't separate words when line reaches the end of the screen (but only with
 " spaces and similar charaters)
 set linebreak
+
+" Allow mouse clicks but disable mouse wheel 
+" (helpful for long lines in Markdown or LaTeX)
+set mouse=a
+"map <ScrollWheelUp> <nop>
+"map <S-ScrollWheelUp> <nop>
+"map <ScrollWheelDown> <nop>
+"map <S-ScrollWheelDown> <nop>
+
+" Copy, cut, and paste via the usual key bindings
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <C-r><C-o>+
